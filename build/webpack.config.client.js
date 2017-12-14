@@ -14,7 +14,11 @@ const config = webpackMerge(baseConfig, {
   },
   plugins: [
     new HTMLPlugin({
-      template: path.join(__dirname, '../client/templete.html')
+      template: path.join(__dirname, '../client/template.html')
+    }),
+    new HTMLPlugin({
+      template: '!!ejs-compiled-loader!' + path.join(__dirname, '../client/server.template.ejs'),
+      filename: 'server.ejs'
     })
   ],
 })
@@ -28,15 +32,19 @@ if (isDev){
   }
   config.devServer = {
     host: '0.0.0.0',
+    compress: true,
     port: '8888',
     contentBase: path.join(__dirname, '../dist'),
     hot: true,
     overlay: {
       errors: true
     },
-    publicPath: '/public',
+    publicPath: '/public/',
     historyApiFallback: {
       index: '/public/index.html'
+    },
+    proxy: {
+      '/api': 'http://localhost:3333'
     }
   }
 
