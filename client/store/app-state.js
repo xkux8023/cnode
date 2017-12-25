@@ -4,7 +4,7 @@ import {
   action,
 } from 'mobx'
 
-export default class AppState {
+class AppState {
   constructor({ count, name } = { count: 0, name: 'Jokcy' }) {
     this.count = count
     this.name = name
@@ -28,3 +28,4 @@ export default class AppState {
   }
 }
 
+export default AppState
