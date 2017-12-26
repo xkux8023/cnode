@@ -38,7 +38,9 @@ class MainAppBar extends React.Component {
   /* eslint-enable */
 
   render() {
-    const { classes } = this.props
+    const {
+      classes,
+    } = this.props
     return (
       <div className={classes.root}>
         <AppBar position="fixed">

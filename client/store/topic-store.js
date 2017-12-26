@@ -8,15 +8,15 @@ import {
 import { topicSchema } from '../util/variable-define'
 import { get } from '../util/http'
 
+const createTopic = (data) => {
+  return Object.assign({}, topicSchema, data)
+}
+
 class Topic {
   constructor(data) {
     extendObservable(this, data)
   }
   @observable syncing = false
-}
-
-const createTopic = (data) => {
-  return Object.assign({}, topicSchema, data)
 }
 
 class TopicStore {
@@ -32,12 +32,14 @@ class TopicStore {
     this.topics.push(new Topic(createTopic(topic)))
   }
 
-  @action fetchTopics() {
+  @action fetchTopics(tab) {
     return new Promise((resolve, reject) => {
+      this.tab = tab
       this.syncing = true
       this.topics = []
       get('/topics', {
         mdrender: false,
+        tab,
       }).then((resp) => {
         if (resp.success) {
           resp.data.forEach((topic) => {

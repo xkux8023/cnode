@@ -1,10 +1,10 @@
 export const tabs = {
-  share: '分享',
-  job: '工作',
-  ask: '问答',
-  good: '精品',
-  dev: '测试',
   all: '全部',
+  share: '分享',
+  good: '精华',
+  ask: '问答',
+  job: '招聘',
+  dev: '客户端测试',
 }
 
 export const topicSchema = {

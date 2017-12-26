@@ -1,22 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 
 import ListItem from 'material-ui/List/ListItem'
 import ListItemAvatar from 'material-ui/List/ListItemAvatar'
 import ListItemText from 'material-ui/List/ListItemText'
 import { withStyles } from 'material-ui/styles'
 import Avatar from 'material-ui/Avatar'
-
+import { tabs } from '../../util/variable-define'
 
 import {
   topicPrimaryStyle,
   topicSecondaryStyle,
 } from './styles'
 
+const getTab = (tab, isTop, isGood) => {
+  return isTop ? '置顶' : (isGood ? '精华' : tab) // eslint-disable-line
+}
+
 const Primary = ({ classes, topic }) => {
+  const isTop = topic.top
+  const isGood = topic.good
+  const classnames = cx([classes.tab, isTop ? classes.top : '', isGood ? classes.good : ''])
   return (
     <div className={classes.root}>
-      <span className={classes.tab}>{topic.tab}</span>
+      <span className={classnames}>
+        {getTab(tabs[topic.tab], isTop, isGood)}
+      </span>
       <span className={classes.title}>{topic.title}</span>
     </div>
   )

@@ -9,8 +9,8 @@ import TopicDetail from '../views/topic-detail/index'
 import TestApi from '../views/test/api-test';
 
 export default () => [
-  <Route key="first" path="/" render={() => <Redirect to="/list" />} exact />,
-  <Route key="list" path="/list" component={TopicList} exact />,
+  <Route key="/" path="/" render={() => <Redirect to="/index" />} exact />,
+  <Route key="index" path="/index" component={TopicList} exact />,
   <Route key="detail" path="/detail" component={TopicDetail} />,
   <Route key="test" path="/test" component={TestApi} />,
 ]
