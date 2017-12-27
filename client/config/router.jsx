@@ -11,6 +11,6 @@ import TestApi from '../views/test/api-test';
 export default () => [
   <Route key="/" path="/" render={() => <Redirect to="/index" />} exact />,
   <Route key="index" path="/index" component={TopicList} exact />,
-  <Route key="detail" path="/detail" component={TopicDetail} />,
+  <Route key="detail" path="/detail/:id" component={TopicDetail} />,
   <Route key="test" path="/test" component={TestApi} />,
 ]
